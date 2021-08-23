@@ -1,5 +1,4 @@
 import { createApp } from 'vue';
-import './theme/element.scss';
 
 import MonitoringOverview from './components/MonitoringOverview';
 
