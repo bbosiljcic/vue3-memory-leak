@@ -25,24 +25,14 @@ export default {
         };
     },
     async created() {
-        this.folders = [
-             {
-                "id": 53,
-                "name": "Folder 53",
-            },
-            {
-                "id": 11,
-                "name": "Folder 11",
-            },
-            {
-                "id": 13,
-                "name": "Folder 13",
-            },
-            {
-                "id": 89,
-                "name": "Folder 89",
-            },
-        ];
+
+        this.folders = [...Array(5)].map(() => {
+            const random = Math.floor(Math.random() * 1000) + 1;
+            return {
+                id: random,
+                name: `Folder ${random}`,
+            }
+        });
     },
 };
 </script>
