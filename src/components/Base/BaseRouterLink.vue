@@ -14,14 +14,9 @@ export default {
             type: String,
             required: true,
         },
-        noRouter: {
-            type: Boolean,
-            default: false,
-        },
     },
     methods: {
         go(event) {
-            if (this.noRouter) return;
             event.preventDefault();
             if (!this.href) return;
             this.$root.currentRoute = this.href;

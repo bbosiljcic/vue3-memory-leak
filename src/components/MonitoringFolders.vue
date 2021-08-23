@@ -1,19 +1,19 @@
 <template>
-            <div v-for="folder in folders" :key="folder.id">
-                        <monitoring-folder
-                            :folder="folder"
-                        />
-            </div>
+    <div v-for="folder in folders" :key="folder.id">
+        <base-router-link class="monitoring-grid-item" :href="`/monitoring/folder/${folder.id}`" draggable="false">
+        {{ folder.name }}
+        </base-router-link>
+    </div>
 </template>
 
 <script>
 
-import MonitoringFolder from './MonitoringFolder';
+import BaseRouterLink from './Base/BaseRouterLink';
 
 export default {
     name: 'MonitoringFolders',
     components: {
-        MonitoringFolder,
+        BaseRouterLink,
     },
     data() {
         return {
