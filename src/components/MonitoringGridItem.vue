@@ -6,27 +6,6 @@
             </div>
             <div class="column-right">
                 <slot name="right" />
-                <el-dropdown trigger="click">
-                    <i class="far fa-ellipsis-v context-menu" @click.stop @click.prevent />
-                    <template #dropdown>
-                        <el-dropdown-menu v-if="itemType === 'report'">
-                            <el-dropdown-item @click="openMoveModal()">
-                                <span class="dropdown-item"><i class="far fa-fw fa-folder-open" />Move</span>
-                            </el-dropdown-item>
-                            <el-dropdown-item v-if="!agencyRestriction" divided @click="showDeleteReportModal=true">
-                                <span class="dropdown-item"><i class="far fa-fw fa-trash-alt" />Delete</span>
-                            </el-dropdown-item>
-                        </el-dropdown-menu>
-                        <el-dropdown-menu v-if="itemType === 'folder'">
-                            <el-dropdown-item v-if="reportCount === 0" class="dropdown-item" @click="showDeleteFolderModal=true">
-                                <span class="dropdown-item"><i class="far fa-fw  fa-trash-alt" />Delete</span>
-                            </el-dropdown-item>
-                            <el-dropdown-item v-if="reportCount > 0" class="dropdown-item" @click="showFolderNotEmptyModal=true">
-                                <span class="dropdown-item"><i class="far fa-fw fa-trash-alt" />Delete</span>
-                            </el-dropdown-item>
-                        </el-dropdown-menu>
-                    </template>
-                </el-dropdown>
             </div>
         </base-router-link>
     </div>
@@ -97,7 +76,106 @@ export default {
             this.showMoveReportModal = true;
             this.moveDisabled = true;
 
-            const unsortedFolders = await monitoringService.getFolders();
+            const unsortedFolders = [
+                            {
+                "id": 53,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 53",
+                "reportCount": 2
+            },
+            {
+                "id": 11,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 11",
+                "reportCount": 5
+            },
+            {
+                "id": 13,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 13",
+                "reportCount": 2
+            },
+            {
+                "id": 89,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 89",
+                "reportCount": 0
+            },
+            {
+                "id": 135,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 135",
+                "reportCount": 1
+            },
+            {
+                "id": 54,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 54",
+                "reportCount": 2
+            },
+            {
+                "id": 5,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 5",
+                "reportCount": 11
+            },
+            {
+                "id": 2,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 2",
+                "reportCount": 10
+            },
+            {
+                "id": 127,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 127",
+                "reportCount": 47
+            },
+            {
+                "id": 64,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 64",
+                "reportCount": 5
+            },
+            {
+                "id": 51,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 51",
+                "reportCount": 2
+            },
+            {
+                "id": 128,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 128",
+                "reportCount": 7
+            },
+            {
+                "id": 130,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 130",
+                "reportCount": 5
+            },
+            {
+                "id": 129,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 129",
+                "reportCount": 2
+            }
+            ];
 
             if (!unsortedFolders) {
                 this.$message.error('Please create a folder before moving this report.');

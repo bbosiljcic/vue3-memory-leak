@@ -1,32 +1,13 @@
 <template>
-    <el-skeleton :loading="!loaded" animated>
-        <template #template>
-            <el-row :gutter="24" class="folder-grid">
-                <template v-for="i in 8" :key="i">
-                    <el-col :sm="24" :md="12" :lg="6">
-                        <el-skeleton-item />
-                    </el-col>
-                </template>
-            </el-row>
-        </template>
-        <template #default>
-            <el-row :gutter="24" class="folder-grid">
-                <template v-for="folder in orderedFolders" :key="folder.id">
-                    <el-col :sm="24" :md="12" :lg="6">
+            <div v-for="folder in folders" :key="folder.id">
                         <monitoring-folder
                             :folder="folder"
-                            @folder-deleted="handleFolderDeleted"
                         />
-                    </el-col>
-                </template>
-            </el-row>
-        </template>
-    </el-skeleton>
+            </div>
 </template>
 
 <script>
 
-import monitoringService from '../services/monitoringService';
 import MonitoringFolder from './MonitoringFolder';
 
 export default {
@@ -34,40 +15,112 @@ export default {
     components: {
         MonitoringFolder,
     },
-    props: {
-        orderDirection: {
-            type: String,
-            default: 'ASC',
-        },
-        orderBy: {
-            type: String,
-            default: 'Title',
-        },
-    },
     data() {
         return {
             folders: [],
-            loaded: false,
-            disableCreate: false,
         };
     },
-    computed: {
-        orderedFolders() {
-            this.orderFolders();
-            return this.folders;
-        },
-    },
     async created() {
-        this.folders = await monitoringService.getFolders();
-        this.loaded = true;
-    },
-    methods: {
-        orderFolders() {
-            this.folders ;
-        },
-        handleFolderDeleted(folderId) {
-            this.folders = this.folders.filter((folder) => folder.id !== folderId);
-        },
+        this.folders = [
+                        {
+                "id": 53,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 53",
+                "reportCount": 2
+            },
+            {
+                "id": 11,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 11",
+                "reportCount": 5
+            },
+            {
+                "id": 13,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 13",
+                "reportCount": 2
+            },
+            {
+                "id": 89,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 89",
+                "reportCount": 0
+            },
+            {
+                "id": 135,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 135",
+                "reportCount": 1
+            },
+            {
+                "id": 54,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 54",
+                "reportCount": 2
+            },
+            {
+                "id": 5,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 5",
+                "reportCount": 11
+            },
+            {
+                "id": 2,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 2",
+                "reportCount": 10
+            },
+            {
+                "id": 127,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 127",
+                "reportCount": 47
+            },
+            {
+                "id": 64,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 64",
+                "reportCount": 5
+            },
+            {
+                "id": 51,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 51",
+                "reportCount": 2
+            },
+            {
+                "id": 128,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 128",
+                "reportCount": 7
+            },
+            {
+                "id": 130,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 130",
+                "reportCount": 5
+            },
+            {
+                "id": 129,
+                "customer": 1,
+                "creator": 2,
+                "name": "New Folder 129",
+                "reportCount": 2
+            }
+        ];
     },
 };
 </script>

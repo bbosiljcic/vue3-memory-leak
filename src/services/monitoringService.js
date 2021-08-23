@@ -1,8 +1,5 @@
-import { wait } from '../helpers/utils';
-
 class MonitoringService {
     static async getFolders() {
-        await wait(300);
         return [
             {
                 "id": 53,
@@ -107,8 +104,7 @@ class MonitoringService {
 
 
     static async getFolderById(folderId) {
-        await wait(500);
-        
+
         return {
             "id": folderId,
             "customer": 1,
@@ -122,7 +118,6 @@ class MonitoringService {
 
     static async getReportsLonely() {
 
-        await wait(500);
 
         return [
             {

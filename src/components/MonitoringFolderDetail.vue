@@ -20,7 +20,6 @@
         <span ref="textMeasure" class="text-measure">{{ folderName }}</span>
         <i v-if="editIconVisible" class="far fa-pen edit-folder-name" @click="enableInput" />
     </div>
-    <el-divider />
     <monitoring-reports :folder-id="folderId" />
 </template>
 
@@ -72,7 +71,14 @@ export default {
          */
         if (this.folderId >= 0) {
             this.disabledInput = true;
-            const folder = await monitoringService.getFolderById(this.folderId);
+            const folder = {
+                "id": this.folderId,
+                "customer": 1,
+                "creator": 2,
+                "dateModified": "2021-04-23 09:15:28.41935",
+                "name": `Folder ${this.folderId}`,
+                "reportCount": 2
+            }
             this.folderName = folder.name;
             this.loaded = true;
         }
