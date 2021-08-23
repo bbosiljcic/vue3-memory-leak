@@ -1,16 +1,6 @@
 import { createApp } from 'vue';
-import ElementPlus from 'element-plus';
+import App from './App';
 
-import './theme/element.scss';
+const app = createApp(App);
 
-import MonitoringOverview from './components/MonitoringOverview';
-
-// needed for webpack HRM
-if (module && module.hot) {
-    module.hot.accept();
-}
-
-const app = createApp(MonitoringOverview);
-
-app.use(ElementPlus);
 app.mount('#app');
