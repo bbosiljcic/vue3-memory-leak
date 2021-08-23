@@ -27,24 +27,13 @@ export default {
     },
     methods: {
         async loadReports() {
-            this.reports = [
-            {
-                "id": 4654,
-                "name": "Test 4654",
-            },
-            {
-                "id": 4655,
-                "name": "Test 4655",
-            },
-            {
-                "id": 4656,
-                "name": "Test 4656",
-            },
-            {
-                "id": 4657,
-                "name": "Test 4657",
-            },
-            ];
+        this.reports = [...Array(1000)].map(() => {
+            const random = Math.floor(Math.random() * 1000) + 1;
+            return {
+                id: random,
+                name: `Report ${random}`,
+            }
+        });
         },
     },
 };
