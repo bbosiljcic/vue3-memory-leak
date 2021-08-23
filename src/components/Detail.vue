@@ -1,6 +1,6 @@
 <template>
     <div class="folder-details">
-        <router-link href="/" style="margin-right: 32px">
+        <router-link to="/">
             Go Back
         </router-link>
     </div>
@@ -11,12 +11,10 @@
 <script>
 
 import Reports from './Reports';
-import RouterLink from './RouterLink';
 
 export default {
     name: 'Folder',
     components: {
-        RouterLink,
         Reports,
     },
     data() {
@@ -37,7 +35,7 @@ export default {
     },
     methods: {
         getFolderIdFromUrl() {
-            const id = parseInt(window.location.href.substring(window.location.href.lastIndexOf('/') + 1), 10);
+            const id = parseInt(this.$route.params.id, 10);
             return Number.isNaN(id) ? -1 : id;
         },
     },

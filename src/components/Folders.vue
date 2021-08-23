@@ -1,19 +1,22 @@
 <template >
     <div v-for="folder in folders" :key="folder.id">
-        <router-link :href="`folder/${folder.id}`">
+        <router-link :to="`/folder/${folder.id}`">
             <span>{{ folder.name }}</span>
         </router-link>
     </div>
+    <hr />
+    <reports  />
+
 </template>
 
 <script>
 
-import RouterLink from './RouterLink';
+import Reports from './Reports';
 
 export default {
     name: 'Folders',
     components: {
-        RouterLink,
+        Reports,
     },
     data() {
         return {
